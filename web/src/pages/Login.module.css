@@ -1,3 +1,4 @@
+/*TODO: arrumar posicao do botao (deixa-lo relativo a div)*/
 .loginContainer {
   display: flex; 
   align-items: center; 
@@ -100,7 +101,7 @@
   background-color: #1A58B0;
 }
 
-/*LINHA HORIZONTAL ABAIXO DO BOTÃO*/
+/*LINHA HORIZONTAL*/
 .horizontalDivider {
   width: 250px;
   height: 2px;
@@ -117,7 +118,7 @@
   text-decoration: underline;
   font-weight: 500;
 }
-    /*TODO: arrumar posicao do botao (deixa-lo relativo a div)*/
+
 .passwordWrapper {
   position: relative; /* Isso avisa o ícone: "Se você for flutuar, não saia dessa caixa!" */
   display: flex;

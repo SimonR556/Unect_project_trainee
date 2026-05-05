@@ -1,0 +1,160 @@
+/*TODO: verificar porque a pagina esta rolando para baixo*/
+
+.CadastroContainer {
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  height: calc(100vh - 25px); 
+  background-color: #FAFAFA;
+  color: #333;
+}
+
+.leftSection {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.logo {
+  color: #226ED8;
+  font-size: 2.8rem;
+  margin-bottom: 5px;
+}
+
+/*LINHA HORIZONTAL*/
+.logoDivider {
+  width: 130px;
+  height: 2px;
+  background-color: #A2BCE0;
+}
+
+.formWrapper {
+  width: 100%;
+  max-width: 340px;
+  display: flex;
+  flex-direction: column;
+}
+
+.formTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #111;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; 
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.inputGroup label {
+  font-size: 0.9rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.inputGroup input {
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #A2BCE0;
+  background-color: #F4F7FC;
+  color: #333;
+  font-family: inherit;
+  outline: none;
+  width: 100%;
+}
+
+.inputGroup input::placeholder {
+  color: #9AA9C0; 
+}
+
+.passwordWrapper {
+  position: relative;
+  display: flex;
+  width: 100%;
+}
+
+.passwordWrapper input {
+  padding-right: 40px; 
+}
+
+.eyeButton {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.eyeButton img {
+  width: 20px;
+  height: auto;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.eyeButton:hover img {
+  opacity: 1;
+}
+
+.submitBtn {
+  margin-top: 15px;
+  padding: 14px;
+  background-color: #226ED8;
+  color: white;
+  border: none;
+  border-radius: 50px; 
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: background-color 0.2s ease;
+}
+
+.submitBtn:hover {
+  background-color: #1A58B0;
+}
+
+/*LINHA VERTICAL*/
+.verticalDivider {
+  width: 2px;
+  height: 80vh;
+  background-color: #D3DEF0;
+  margin: 0 40px;
+}
+
+/*LADO DIREITO*/
+.imageSection {
+  flex: 1; 
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+}
+
+.cadastroImg {
+  max-width: 90%;
+  height: auto;
+}

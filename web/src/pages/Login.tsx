@@ -3,13 +3,14 @@ import styles from './Login.module.css';
 import loginImage from './img/login_img.png'
 import eyeOpen from './img/olho_aberto.svg';
 import eyeClosed from './img/olho_fechado.svg';
+
 export function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Tentando logar com:', email, password);
+    console.log('Tentando logar com:', email, password); //teste para o back 
   };
 
   return (
