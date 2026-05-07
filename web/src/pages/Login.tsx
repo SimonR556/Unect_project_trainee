@@ -40,6 +40,7 @@ export function Login() {
 
         <div className={styles.inputGroup}>
           <label htmlFor="password">Senha</label>
+          <div className={styles.passwordWrapper}>
           <input 
             type={showPassword ? "text" : "password"}
             id="password"
@@ -56,6 +57,7 @@ export function Login() {
             >
                 <img src={showPassword ? eyeOpen : eyeClosed} alt={showPassword ? "esconder senha" : "mostrar senha"}/>
             </button>
+        </div>
         </div>
 
         <button type="submit" className={styles.submitBtn}>Entrar</button>

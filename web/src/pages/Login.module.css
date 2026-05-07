@@ -1,4 +1,3 @@
-/*TODO: arrumar posicao do botao (deixa-lo relativo a div)*/
 .loginContainer {
   display: flex; 
   align-items: center; 
@@ -68,6 +67,7 @@
   background-color: #eef5ff;
   font-family: inherit;
   outline: none;
+  width: 100%;
 }
 
 .inputGroup input::placeholder {
@@ -120,25 +120,22 @@
 }
 
 .passwordWrapper {
-  position: relative; /* Isso avisa o ícone: "Se você for flutuar, não saia dessa caixa!" */
+  position: relative;
   display: flex;
   width: 100%;
 }
 
-/* Precisamos garantir que o input de senha ocupe todo o espaço */
 .passwordWrapper input {
   width: 100%;
-  padding-right: 40px; /* Super importante: cria um espaço em branco na direita para o texto não passar por baixo do ícone */
+  padding-right: 40px;
 }
 
-/* Estilos do botão que flutua */
 .eyeButton {
-  position: absolute; /* Faz o botão descolar do fundo e flutuar */
-  right: 60px; /* Gruda o botão na direita, com 12px de distância da borda */
-  top: 58%; /* Joga o botão para a metade da caixa */
-  transform: translateY(-50%); /* Centraliza perfeitamente na vertical */
-  
-  /* Removemos o visual feio de botão padrão do navegador */
+  position: absolute; 
+  right: 12px; 
+  top: 50%; 
+  transform: translateY(-50%);
+
   background: transparent;
   border: none;
   cursor: pointer;
@@ -148,9 +145,8 @@
   padding: 0;
 }
 
-/* Tamanho do ícone do Figma */
 .eyeButton img {
-  width: 30px; /* Ajuste o tamanho se precisar */
+  width: 30px;
   height: auto;
   opacity: 0.6; 
   transition: opacity 0.2s;
