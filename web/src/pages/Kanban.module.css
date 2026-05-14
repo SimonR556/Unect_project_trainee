@@ -1,0 +1,178 @@
+.kanbanContainer {
+    display: flex;
+    flex-direction: column;
+    height: 100dvh;
+    overflow: hidden;
+    width: 100%;
+    background-color: #FAFAFA;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #226ED8;
+    color: white;
+    padding: 20px 200px 20px 200px;
+    height: 100px;
+    flex-shrink: 0; 
+    box-sizing: border-box;
+}
+
+.headerLeft, .headerRight {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.headerRight {
+    justify-content: flex-end;
+}
+
+.headerLeft img{
+    height: 65px;
+    width: auto;
+}
+
+.headerTitle {
+    font-size: 3rem;
+    font-weight: 700;
+    flex: 1;
+    text-align: center;
+    margin: 0;
+}
+
+.themeToggle {
+    background: #FFD569;
+    border: none;
+    border-radius: 30px;
+    width: 64px;
+    height: 34px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 4px 6px;
+}
+
+.themeToggle img {
+    height: 100%;
+    width: auto;
+}
+
+.mainContent {
+    flex: 1; 
+    min-height: 0;
+    padding: 20px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+
+.quoteCard {
+    background-color: #FFFFFF;
+    border-radius: 16px;
+    padding: 20px 30px;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    width: 100%;
+    max-width: 800px; 
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
+    margin-bottom: 40px;
+}
+
+.bulbIcon {
+    width: 40px;
+    height: auto;
+}
+
+.quoteText h2 {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.quoteText p {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.5;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #226ED8;
+    color: white;
+    padding: 0px 200px 0px 200px;
+    height: 60px;
+    flex-shrink: 0;
+    font-size: 0.85rem;
+}
+
+.footer p{
+    margin: 0;
+}
+
+.boardArea {
+  display: flex;
+  gap: 60px;
+  width: 100%;
+  max-width: 1300px; 
+  flex: 1;
+  min-height: 0;
+  margin-bottom: 20px;
+}
+
+.column {
+  flex: 1; 
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 0;
+}
+
+.columnHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 32px; 
+}
+
+.columnHeader h2 {
+  font-size: 1.25rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.addBtn {
+  background: transparent;
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.addBtn:hover {
+    transform: scale(1.1);
+}
+
+.addBtn img {
+    width: 33px;
+    height: auto;
+}
+
+.columnContent {
+  background-color: #EEEEEE;
+  border-radius: 12px;
+  flex: 1;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: auto; 
+}

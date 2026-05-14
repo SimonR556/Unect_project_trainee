@@ -5,7 +5,14 @@
   height: calc(100vh - 25px); 
 }
 
-/*LADO ESQUERDO*/
+.topBar {
+  background-color: #226ED8;
+  height: 52px;
+  width: 100%;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
+  flex-shrink: 0;
+}
+
 .imageSection {
   flex: 1; 
   display: flex;
@@ -19,7 +26,6 @@
   height: auto;
 }
 
-/*LINHA VERTICAL*/
 .verticalDivider {
   width: 2px;
   height: 75vh;
@@ -74,8 +80,19 @@
   color: #9AA9C0; 
 }
 
-.forgotPassword {
+.inputError {
+  border: 1px solid #D93025 !important;
+  background-color: #FDECEA !important;
+}
+
+.errorMessage {
+  color: #D93025;
   font-size: 0.75rem;
+  margin-top: 2px;
+}
+
+.forgotPassword {
+  font-size: 0.8rem;
   color: #226ED8;
   text-decoration: underline;
   align-self: flex-start;
@@ -101,7 +118,6 @@
   background-color: #1A58B0;
 }
 
-/*LINHA HORIZONTAL*/
 .horizontalDivider {
   width: 250px;
   height: 2px;
@@ -135,7 +151,6 @@
   right: 12px; 
   top: 50%; 
   transform: translateY(-50%);
-
   background: transparent;
   border: none;
   cursor: pointer;

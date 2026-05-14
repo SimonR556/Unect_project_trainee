@@ -1,21 +1,38 @@
-import Fastify from 'fastify'
+import 'reflect-metadata';
+import fastify from 'fastify';
+import cors from '@fastify/cors';
+import { taskRoutes } from './routes/tasks';
+import { authRoutes } from './routes/auth';
+import { AppDataSource } from './database';
 
-const app = Fastify({
-  logger: true
-})
 
-app.get('/teste', async (request, reply) => {
-  return { hello: 'Utask 3.0 rodando!' }
-})
+const app = fastify({ logger: true });
+
+app.register(cors, {
+    origin: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], 
+    allowedHeaders: ['Content-Type', 'Authorization']
+});
+
+app.register(taskRoutes);
+app.register(authRoutes);
+
+app.get('/ping', async (request, reply) => {
+    return { message: 'servidor uTask 3.0 online!' };
+});
 
 const start = async () => {
-  try {
-    await app.listen({ port: 3333 })
-    console.log('Server running on http://localhost:3333')
-  } catch (err) {
-    app.log.error(err)
-    process.exit(1)
-  }
-}
+    try {
+        await AppDataSource.initialize();
+        console.log('banco de dados conectado');
 
-start()
+        await app.listen({ port: Number(process.env.PORT) || 3333 });
+        console.log(`servidor rodando em http://localhost:${process.env.PORT || 3333}`);
+        
+    } catch (err) {
+        app.log.error(err);
+        process.exit(1);
+    }
+};
+
+start();

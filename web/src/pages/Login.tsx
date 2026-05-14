@@ -3,18 +3,43 @@ import styles from './Login.module.css';
 import loginImage from './img/login_img.png'
 import eyeOpen from './img/olho_aberto.svg';
 import eyeClosed from './img/olho_fechado.svg';
+import { api } from '../services/api';
+import { useNavigate, Link } from 'react-router-dom';
 
 export function Login() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const handleLogin = (e: React.FormEvent) => {
+  const [loginError, setLoginError] = useState(false);
+
+const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Tentando logar com:', email, password); //teste para o back 
+    setLoginError(false); 
+    
+    try {
+      const response = await api.post('/login', {
+        email,
+        password
+      });
+
+      const { token, user } = response.data;
+
+      localStorage.setItem('@uTask:token', token);
+      localStorage.setItem('@uTask:user', JSON.stringify(user));
+
+      navigate('/kanban');
+
+    } catch (error) {
+      console.error("Erro ao fazer login:", error);
+      setLoginError(true);
+    }
   };
 
   return (
     <>
+    <div className={styles.topBar}></div>
+    
     <div className={styles.loginContainer}> 
       <div className={styles.imageSection}>
             <img src={loginImage} alt="pessoas organizando tarefas" className={styles.loginImagem}/>
@@ -47,6 +72,7 @@ export function Login() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Senha secreta"
+            className={loginError ? styles.inputError : ''}
             required
           />
 
@@ -58,6 +84,8 @@ export function Login() {
                 <img src={showPassword ? eyeOpen : eyeClosed} alt={showPassword ? "esconder senha" : "mostrar senha"}/>
             </button>
         </div>
+        {loginError && <span className={styles.errorMessage}>Senha incorreta, tente novamente.</span>}
+        <Link to="/esqueceu-senha" className={styles.forgotPassword}>Esqueceu a senha ?</Link>
         </div>
 
         <button type="submit" className={styles.submitBtn}>Entrar</button>
@@ -65,7 +93,7 @@ export function Login() {
 
         <div className={styles.horizontalDivider}></div>
 
-      <p><a href="/register">Não tem cadastro ? Crie uma conta</a></p>
+      <p className={styles.registerText}><Link to="/register">Não tem cadastro ? Crie uma conta</Link></p>
     </div>
 
     </div>

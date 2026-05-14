@@ -3,22 +3,52 @@ import eyeClosed from './img/olho_fechado.svg';
 import eyeOpen from './img/olho_aberto.svg';
 import cadastroImg from "./img/cadastro_img.svg";
 import styles from "./Cadastro.module.css"
+import verificado from "./img/verified.svg"
+import { useNavigate, Link } from 'react-router-dom';
+import { api } from '../services/api';
 
 export function Cadastro() {
+    const navigate = useNavigate();
     const [userName, setUserName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [confirmPassword, setConfirmPassword] = useState('');
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+    const [passwordError, setPasswordError] = useState(false);
+    const [showSuccessModal, setShowSuccessModal] = useState(false);
 
-    const handleCadastro = (e: React.FormEvent) => {
+const handleCadastro = async (e: React.FormEvent) => {
         e.preventDefault();
-        console.log("Tentando cadastrar um usuario",userName,email,password);
+        
+        if (password !== confirmPassword) {
+            setPasswordError(true);
+            return; 
+        }
+        
+        setPasswordError(false); 
+        
+        try {
+            await api.post('/register', {
+                name: userName,
+                email,
+                password
+            });
+
+            setShowSuccessModal(true);
+            setTimeout(() => {
+                navigate('/login');
+            }, 3000);
+
+        } catch (error) {
+            console.error("Erro ao cadastrar usuário:", error);
+        }
     };
 
     return(
     <>
+    <div className={styles.topBar}></div> 
+
     <div className={styles.CadastroContainer}> 
 
         <div className={styles.leftSection}>
@@ -66,6 +96,7 @@ export function Cadastro() {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         placeholder="Senha secreta"
+                        className={passwordError ? styles.inputError : ''}
                         required
                     />
 
@@ -88,6 +119,7 @@ export function Cadastro() {
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     placeholder="Senha secreta"
+                    className={passwordError ? styles.inputError : ''}
                     required
                  />
 
@@ -98,6 +130,7 @@ export function Cadastro() {
                         <img src={showConfirmPassword ? eyeOpen : eyeClosed}alt="Mostrar senha" />
                     </button>
                 </div>  
+                {passwordError && <span className={styles.errorMessage}>Senhas não combinam, tente novamente.</span>}
             </div>
 
             <button type="submit" className={styles.submitBtn}>Criar Cadastro</button>
@@ -105,13 +138,24 @@ export function Cadastro() {
           </div>
         </div>
 
-            <div className={styles.verticalDivider}></div>
-
+        <div className={styles.verticalDivider}></div>
 
         <div className={styles.imageSection}>
             <img src={cadastroImg} alt="pessoa visualizando tarefas" className={styles.cadastroImg}/>
         </div>
     </div>
+
+    {showSuccessModal && (
+        <div className={styles.modalOverlay}>
+            <div className={styles.modalContent}>
+                <div className={styles.modalHeader}>
+                    <img src={verificado} alt="Ícone de sucesso" className={styles.successIcon} />
+                    <h2>Conta criada com sucesso</h2>
+                </div>
+                <p>Um instante, iremos te redirecionar ao login !</p>
+            </div>
+        </div>
+    )}
     </>
     )
 }
