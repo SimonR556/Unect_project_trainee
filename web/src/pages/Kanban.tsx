@@ -17,9 +17,7 @@ export interface Task {
 
 export function Kanban(){
 const [isModalOpen, setIsModalOpen] = useState(false);
-const [frase, setFrase] = useState(
-    "frase do dia: Thiago, nao desista" //futuramente a API
-);
+const [frase, setFrase] = useState("Buscando inspiração para o seu dia...");
 const [tasks, setTasks] = useState<Task[]>([]);
 
 useEffect(() => {
@@ -31,6 +29,29 @@ useEffect(() => {
         console.error("Erro ao buscar as tarefas do banco:", error);
       });
   }, []);
+
+  useEffect(() => {
+        const fetchFraseDoDia = async () => {
+            try {
+                const adviceResponse = await fetch('https://api.adviceslip.com/advice');
+                const adviceData = await adviceResponse.json();
+                const fraseEmIngles = adviceData.slip.advice;
+                const translateUrl = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(fraseEmIngles)}&langpair=en|pt`;
+                const translateResponse = await fetch(translateUrl);
+                const translateData = await translateResponse.json();
+                if (translateData && translateData.responseData) {
+                    setFrase(translateData.responseData.translatedText);
+                } else {
+                    setFrase(fraseEmIngles); 
+                }
+            } catch (error) {
+                console.error("Erro ao buscar ou traduzir a frase:", error);
+                setFrase("Acredite no processo e não desista!");
+            }
+        };
+
+        fetchFraseDoDia();
+    }, []);
 
   const handleAddTask = async (title: string, description: string) => {
     try {
