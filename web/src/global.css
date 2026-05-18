@@ -1,14 +1,52 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body, html #root{
+/* === PALETA OFICIAL - MODO CLARO === */
+:root {
+  --bg-color: #FAFAFA;
+  --header-footer-bg: #226ED8;
+  --logo-text-color: #226ED8;
+  --kanban-logo-color: #FFFFFF;
+  --footer-text-color: #FFFFFF;
+  --text-primary: #141414;
+  --text-secondary: #555555;
+  --link-color: #226ED8;
+  --column-bg: #EEEEEE;
+  --card-bg: #FFFFFF;
+  --divider-color: #A2BCE0;
+  --toggle-bg: #FFCA28;
+  --btn-secundario-bg: #EEEEEE;
+  --dots-color: #141414;
+}
+
+/* === PALETA OFICIAL - MODO ESCURO === */
+[data-theme='dark'] {
+  --bg-color: #222222; 
+  --header-footer-bg: #3D3D3D;
+  --logo-text-color: #226ED8;
+  --kanban-logo-color: #226ED8;
+  --footer-text-color: #FFFFFF;
+  --text-primary: #FAFAFA;
+  --text-secondary: #C4C4C4;
+  --column-bg: #333333;
+  --card-bg: #3D3D3D;
+  --toggle-bg: #2E2E2E;
+  --btn-secundario-bg: #535353;
+  --dots-color: #FAFAFA;
+}
+
+body, html, #root {
   width: 100%;
   height: 100%;
-  color: rgb(0, 0, 0);
   font-family: Poppins, sans-serif;
   overflow: hidden;
+  
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }

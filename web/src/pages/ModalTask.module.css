@@ -12,7 +12,8 @@
 }
 
 .modalContainer {
-  background-color: white;
+  background-color: var(--card-bg);
+  transition: background-color 0.3s ease;
   width: 100%;
   max-width: 500px;
   padding: 40px;
@@ -42,7 +43,7 @@ position: absolute;
 }
 
 .modalTitle {
-  color: #226ED8;
+  color: var(--logo-text-color);
   text-align: center;
   margin-bottom: 30px;
   font-size: 1.5rem;
@@ -68,9 +69,14 @@ position: absolute;
 .inputGroup input, .inputGroup textarea {
   padding: 12px;
   border-radius: 12px;
-  border: 1px solid #A2BCE0;
-  background-color: #F4F7FC;
+  border: 1px solid var(--divider-color);
+  background-color: var(--bg-color);
+  color: var(--text-primary);
   font-family: inherit;
+}
+
+.inputGroup input::placeholder, .inputGroup textarea::placeholder {
+  color: var(--text-secondary);
 }
 
 .inputGroup textarea {
@@ -80,11 +86,16 @@ position: absolute;
 
 .createBtn {
   background-color: #226ED8;
-  color: white;
+  color: var(--footer-text-color);
   border: none;
   padding: 14px;
   border-radius: 50px;
   font-weight: 600;
   cursor: pointer;
   margin-top: 10px;
+  transition: background-color 0.2s ease;
+}
+
+.createBtn:hover {
+  background-color: #1A58B0;
 }

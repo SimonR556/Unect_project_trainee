@@ -1,12 +1,16 @@
 import { useState, useEffect } from 'react';
 import styles from './Kanban.module.css';
 import uLogo from './img/Logo_branca.svg'; 
+import uLogoDark from './img/Logo_azul.svg'
 import sunIcon from './img/Light_mode.svg';
+import moonIcon from './img/Dark_mode.svg';
 import bulbIcon from './img/icone.svg';
+import bulbIconDark from './img/Icone_darkmode.svg';
 import add from './img/Adicionar_task.svg';
 import { Card } from './Card';
 import { ModalTask } from './ModalTask';
 import { api } from '../services/api'
+import { useTheme } from '../contexts/ThemeContext';
 
 export interface Task {
     id: string;
@@ -19,6 +23,7 @@ export function Kanban(){
 const [isModalOpen, setIsModalOpen] = useState(false);
 const [frase, setFrase] = useState("Buscando inspiração para o seu dia...");
 const [tasks, setTasks] = useState<Task[]>([]);
+const { isDarkMode, toggleTheme } = useTheme();
 
 useEffect(() => {
     api.get('/tasks')
@@ -102,14 +107,23 @@ return(
 
         <header className={styles.header}>
             <div className={styles.headerLeft}>
-                <img src={uLogo} alt="logo uTask"/>
+                <img src={isDarkMode ? uLogoDark : uLogo} alt="logo uTask"/>
             </div>
 
             <h1 className={styles.headerTitle}>uTask 3.0</h1>
 
             <div className={styles.headerRight}>
-                <button className={styles.themeToggle}>
-                    <img src={sunIcon} alt="mudar tema"/>
+                <button 
+                  className={`${styles.themeToggle} ${isDarkMode ? styles.darkActive : ''}`} 
+                  onClick={toggleTheme}
+                  aria-label="Alternar tema"
+                >
+                    <div className={styles.toggleCircle}>
+                        <img 
+                          src={isDarkMode ? moonIcon : sunIcon} 
+                          alt={isDarkMode ? "Modo escuro" : "Modo claro"}
+                        />
+                    </div>
                 </button>
             </div>
         </header>
@@ -117,7 +131,7 @@ return(
         <main className={styles.mainContent}>
 
             <section className={styles.quoteCard}>
-                <img src={bulbIcon} alt="lâmpada" className={styles.bulbIcon}/>
+                <img src={isDarkMode ? bulbIconDark : bulbIcon} alt="lâmpada" className={styles.bulbIcon}/>
                 <div className={styles.quoteText}>
                     <h2>Frase do dia</h2>
                     <p>{frase}</p>

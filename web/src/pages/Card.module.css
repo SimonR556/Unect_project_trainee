@@ -1,5 +1,6 @@
 .cardContainer {
-  background-color: #FFFFFF;
+  background-color: var(--card-bg);
+  transition: background-color 0.3s ease;
   border-radius: 12px;
   padding: 16px;
   display: flex;
@@ -17,12 +18,13 @@
 
 .cardHeader h3 {
   font-size: 1rem;
-  color: #111;
+  color: var(--text-primary);
   font-weight: 600;
   margin: 0;
 }
 
 .iconBtn {
+  color: var(--dots-color);
   background: transparent;
   border: none;
   cursor: pointer;
@@ -34,7 +36,7 @@
 
 .descriptionText {
   font-size: 0.85rem;
-  color: #555;
+  color: var(--text-secondary);
   line-height: 1.4;
   word-wrap: break-word;
   margin: 12px 0 0 0; 
@@ -43,7 +45,7 @@
 .descriptionToggle {
   background: transparent;
   border: none;
-  color: #555;
+  color: var(--text-secondary);
   font-size: 0.85rem;
   font-family: inherit;
   cursor: pointer;
@@ -55,7 +57,7 @@
 }
 
 .descriptionToggle.expanded {
-  color: #226ED8; 
+  color: var(--link-color);
 }
 
 .cardFooter {
@@ -82,7 +84,7 @@
 }
 
 .moveBtn img {
-  width: 14px;
+  width: 14 px;
   height: auto;
 }
 
@@ -94,13 +96,13 @@
   position: absolute;
   top: 100%; 
   right: 0;  
-  background-color: white;
+  background-color: var(--card-bg);
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   padding: 8px;
   z-index: 10; 
   min-width: 120px;
-  border: 1px solid #EEEEEE;
+  border: 1px solid var(--column-bg);
 }
 
 .deleteMenuBtn {
@@ -121,7 +123,7 @@
 }
 
 .deleteMenuBtn:hover {
-  background-color: #FEECEB;
+  background-color: var(--btn-secundario-bg);
 }
 
 .deleteMenuBtn img {

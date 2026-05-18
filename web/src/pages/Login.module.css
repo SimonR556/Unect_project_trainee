@@ -6,7 +6,7 @@
 }
 
 .topBar {
-  background-color: #226ED8;
+  background-color: var(--header-footer-bg);
   height: 52px;
   width: 100%;
   box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
@@ -29,7 +29,7 @@
 .verticalDivider {
   width: 2px;
   height: 75vh;
-  background-color: #A2BCE0; 
+  background-color: var(--divider-color);
 }
 
 .rightSection {
@@ -41,7 +41,7 @@
 }
 
 .logo {
-  color: #226ED8;
+  color: var(--logo-text-color);
   font-size: 2.8rem;
   margin-bottom: 40px; 
 }
@@ -62,22 +62,23 @@
 
 .inputGroup label {
   font-size: 0.9rem;
-  color: #333;
+  color: var(--text-secondary);
   font-weight: 500;
 }
 
 .inputGroup input {
   padding: 12px 14px;
   border-radius: 8px;
-  border: 1px solid #226ED8;
-  background-color: #eef5ff;
+  border: 1px solid var(--header-footer-bg);
+  background-color: var(--column-bg);
+  color: var(--text-primary);
   font-family: inherit;
   outline: none;
   width: 100%;
 }
 
 .inputGroup input::placeholder {
-  color: #9AA9C0; 
+  color: var(--text-secondary);
 }
 
 .inputError {
@@ -93,7 +94,7 @@
 
 .forgotPassword {
   font-size: 0.8rem;
-  color: #226ED8;
+  color: var(--link-color);
   text-decoration: underline;
   align-self: flex-start;
   margin-top: 2px;
@@ -102,8 +103,8 @@
 .submitBtn {
   width: 100%; 
   height: 48px; 
-  background-color: #226ED8; 
-  color: #FFFFFF;
+  background-color: var(--header-footer-bg);
+  color: var(--footer-text-color);
   border: none;
   border-radius: 50px; 
   cursor: pointer;
@@ -121,7 +122,7 @@
 .horizontalDivider {
   width: 250px;
   height: 2px;
-  background-color: #A2BCE0;
+  background-color: var(--divider-color);
   margin: 30px 0 20px 0; 
 }
 
@@ -130,7 +131,7 @@
 }
 
 .registerText a {
-  color: #333; 
+  color: var(--text-primary);
   text-decoration: underline;
   font-weight: 500;
 }

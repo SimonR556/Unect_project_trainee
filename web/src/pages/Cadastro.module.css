@@ -6,7 +6,7 @@
 }
 
 .topBar {
-  background-color: #226ED8;
+  background-color: var(--header-footer-bg);
   height: 52px;
   width: 100%;
   box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
@@ -29,7 +29,7 @@
 }
 
 .logo {
-  color: #226ED8;
+  color: var(--logo-text-color);
   font-size: 2.8rem;
   margin-bottom: 5px;
 }
@@ -37,7 +37,7 @@
 .logoDivider {
   width: 130px;
   height: 2px;
-  background-color: #A2BCE0;
+  background-color: var(--divider-color);
 }
 
 .formWrapper {
@@ -50,7 +50,7 @@
 .formTitle {
   font-size: 1.1rem;
   font-weight: 600;
-  color: #111;
+  color: var(--text-primary);
   margin-bottom: 20px;
   text-align: left;
 }
@@ -71,22 +71,23 @@
 
 .inputGroup label {
   font-size: 0.9rem;
-  color: #333;
+  color: var(--text-secondary);
   font-weight: 500;
 }
 
 .inputGroup input {
   padding: 12px 14px;
   border-radius: 8px;
-  border: 1px solid #226ED8;
-  background-color: #eef5ff;
+  border: 1px solid var(--header-footer-bg);
+  background-color: var(--column-bg);
+  color: var(--text-primary);
   font-family: inherit;
   outline: none;
   width: 100%;
 }
 
 .inputGroup input::placeholder {
-  color: #9AA9C0; 
+  color: var(--text-secondary); 
 }
 
 .passwordWrapper {
@@ -139,8 +140,8 @@
 .submitBtn {
   margin-top: 15px;
   padding: 14px;
-  background-color: #226ED8;
-  color: white;
+  background-color: var(--header-footer-bg);
+  color: var(--footer-text-color);
   border: none;
   border-radius: 50px; 
   cursor: pointer;
@@ -157,7 +158,7 @@
 .verticalDivider {
   width: 2px;
   height: 75vh;
-  background-color: #D3DEF0;
+  background-color: var(--divider-color);
 }
 
 .imageSection {
@@ -188,10 +189,10 @@
 }
 
 .modalContent {
-  background-color: #FCFCFC;
+  background-color: var(--card-bg);
   padding: 30px 40px;
   border-radius: 16px;
-  border: 1px solid #E0E0E0;
+  border: 1px solid var(--column-bg);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   text-align: center;
   max-width: 400px;
@@ -208,12 +209,12 @@
 
 .modalHeader h2 {
   font-size: 1.2rem;
-  color: #111;
+  color: var(--text-primary);
   margin: 0;
 }
 
 .modalContent p {
-  color: #333;
+  color: var(--text-secondary);
   font-size: 0.95rem;
   margin: 0;
 }

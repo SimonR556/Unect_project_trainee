@@ -2,7 +2,9 @@ import { useState } from 'react';
 import styles from './Card.module.css';
 import moreIcon from './img/more.svg'; 
 import arrowIcon from './img/Proximo.svg'; 
+import arrowIconDark from './img/Proximo_darkmode.svg';
 import trashIcon from './img/lixeira.svg';
+import { useTheme } from '../contexts/ThemeContext';
 
 interface CardProps {
   title: string;
@@ -15,6 +17,7 @@ interface CardProps {
 export function Card({ title, description, status, onMove, onDelete }: CardProps) {
     const [isExpanded, setIsExpanded] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const { isDarkMode } = useTheme();
     return (
         <div className={styles.cardContainer}>
         
@@ -57,7 +60,7 @@ export function Card({ title, description, status, onMove, onDelete }: CardProps
         <div className={styles.cardFooter}>
             {status !== 'Feito' && (
                 <button className={styles.moveBtn} onClick={onMove}>
-                    <img src={arrowIcon} alt="Mover tarefa" />
+                    <img src={isDarkMode ? arrowIconDark : arrowIcon} alt="Mover tarefa" />
                 </button>
             )}
         </div>
