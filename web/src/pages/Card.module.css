@@ -34,6 +34,11 @@
   justify-content: center;
 }
 
+.completedTitle {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
 .descriptionText {
   font-size: 0.85rem;
   color: var(--text-secondary);
@@ -62,30 +67,58 @@
 
 .cardFooter {
   display: flex;
+  align-items: center;
   justify-content: flex-end; 
+  gap: 12px; 
+  width: 100%;
   margin-top: 4px;
 }
 
-.moveBtn {
-  background-color: #226ED8;
-  border: none;
-  border-radius: 50%; 
+.moveBtn, .moveBtnBack {
   width: 28px;
   height: 28px;
+  min-width: 28px;
+  min-height: 28px;
+  flex-shrink: 0; 
+  border-radius: 50%; 
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0; 
+  margin: 0;
+  border: none; 
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: all 0.2s ease;
+}
+
+.moveBtn {
+  background-color: #226ED8; 
 }
 
 .moveBtn:hover {
-  background-color: #1A58B0;
+  background-color: #1A58B0; 
+  transform: scale(1.05); 
 }
 
 .moveBtn img {
-  width: 14 px;
-  height: auto;
+  width: 28px;
+  height: 28px;
+  object-fit: contain; 
+}
+
+.moveBtnBack {
+  background-color: transparent; 
+}
+
+.moveBtnBack:hover {
+  background-color: rgba(34, 110, 216, 0.1); 
+  transform: scale(1.05); 
+}
+
+.moveBtnBack img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain; 
 }
 
 .moreMenuContainer {

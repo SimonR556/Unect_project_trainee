@@ -93,6 +93,38 @@ const handleMoveTask = async (taskId: string) => {
     }
   };
 
+const handleMoveTaskBack = async (taskId: string) => {
+    const task = tasks.find(t => t.id === taskId);
+    if (!task) return;
+
+    let newStatus = task.status;
+    if (task.status === 'Feito') newStatus = 'Em andamento';
+    else if (task.status === 'Em andamento') newStatus = 'A fazer';
+
+    try {
+      await api.put(`/tasks/${taskId}`, { status: newStatus });
+      setTasks(tarefasAtuais =>
+        tarefasAtuais.map(t => (t.id === taskId ? { ...t, status: newStatus } : t))
+      );
+    } catch (error) {
+      console.error("Erro ao voltar a tarefa:", error);
+    }
+};
+
+const handleRestartTask = async (taskId: string) => {
+    try {
+      // Manda a requisição para a API alterando direto para a primeira coluna
+      await api.put(`/tasks/${taskId}`, { status: 'A fazer' });
+      
+      // Atualiza a tela instantaneamente
+      setTasks(tarefasAtuais =>
+        tarefasAtuais.map(t => (t.id === taskId ? { ...t, status: 'A fazer' } : t))
+      );
+    } catch (error) {
+      console.error("Erro ao reiniciar a tarefa:", error);
+    }
+};
+
   const handleDeleteTask = async (taskId: string) => {
     try {
       await api.delete(`/tasks/${taskId}`);
@@ -157,6 +189,8 @@ return(
                                     status={task.status}
                                     onMove={() => handleMoveTask(task.id)}
                                     onDelete={() => handleDeleteTask(task.id)}
+                                    onMoveBack={() => handleMoveTaskBack(task.id)}
+                                    onRestart={() => handleRestartTask(task.id)}
                                 />
                             ))
                         }
@@ -169,7 +203,7 @@ return(
                     </div>
                     <div className={styles.columnContent}>
                        {tasks
-                            .filter(task => task.status === 'Em andamento') // Filtra Em andamento
+                            .filter(task => task.status === 'Em andamento') 
                             .map(task => (
                                     <Card
                                     key={task.id}
@@ -178,6 +212,8 @@ return(
                                     status={task.status} 
                                     onMove={() => handleMoveTask(task.id)} 
                                     onDelete={() => handleDeleteTask(task.id)}
+                                    onMoveBack={() => handleMoveTaskBack(task.id)}
+                                    onRestart={() => handleRestartTask(task.id)}
                                 />
                             ))
                         }
@@ -199,6 +235,8 @@ return(
                                     status={task.status} 
                                     onMove={() => handleMoveTask(task.id)}
                                     onDelete={() => handleDeleteTask(task.id)}
+                                    onMoveBack={() => handleMoveTaskBack(task.id)}
+                                    onRestart={() => handleRestartTask(task.id)}
                                 />
                             ))
                         }

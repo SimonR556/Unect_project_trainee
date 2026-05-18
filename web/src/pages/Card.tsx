@@ -3,7 +3,11 @@ import styles from './Card.module.css';
 import moreIcon from './img/more.svg'; 
 import arrowIcon from './img/Proximo.svg'; 
 import arrowIconDark from './img/Proximo_darkmode.svg';
+import arrowBackIcon from './img/Anterior.svg';
+import arrowBackIconDark from './img/Anterior_darkmode.svg';
 import trashIcon from './img/lixeira.svg';
+import restartIcon from './img/Voltar.svg';
+import restartIconDark from './img/VoltarDarkMode.svg';
 import { useTheme } from '../contexts/ThemeContext';
 
 interface CardProps {
@@ -12,9 +16,11 @@ interface CardProps {
   status: 'A fazer' | 'Em andamento' | 'Feito';
   onMove: () => void;
   onDelete: () => void;
+  onMoveBack: () => void;
+  onRestart: () => void;
 }
 
-export function Card({ title, description, status, onMove, onDelete }: CardProps) {
+export function Card({ title, description, status, onMove, onDelete, onMoveBack, onRestart }: CardProps) {
     const [isExpanded, setIsExpanded] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const { isDarkMode } = useTheme();
@@ -22,7 +28,7 @@ export function Card({ title, description, status, onMove, onDelete }: CardProps
         <div className={styles.cardContainer}>
         
         <div className={styles.cardHeader}>
-            <h3>{title}</h3>
+            <h3 className={status === 'Feito' ? styles.completedTitle : ''}>{title}</h3>
             <div className={styles.moreMenuContainer}>
                 <button 
                     className={styles.iconBtn} 
@@ -58,13 +64,24 @@ export function Card({ title, description, status, onMove, onDelete }: CardProps
         </div>
 
         <div className={styles.cardFooter}>
+            {status !== 'A fazer' && (
+                <button className={styles.moveBtnBack} onClick={onMoveBack}>
+                    <img src={isDarkMode ? arrowBackIconDark : arrowBackIcon} alt="Voltar tarefa" />
+                </button>
+            )}
+            
             {status !== 'Feito' && (
                 <button className={styles.moveBtn} onClick={onMove}>
                     <img src={isDarkMode ? arrowIconDark : arrowIcon} alt="Mover tarefa" />
                 </button>
             )}
-        </div>
 
+            {status === 'Feito' && (
+                <button className={styles.moveBtn} onClick={onRestart}>
+                    <img src={isDarkMode ? restartIconDark : restartIcon} alt="Reiniciar tarefa" />
+                </button>
+            )}
+        </div>
         </div>
   );
 }
