@@ -1,0 +1,246 @@
+.CadastroContainer {
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  height: calc(100vh - 25px); 
+  overflow-y: auto;
+}
+
+.topBar {
+  background-color: var(--header-footer-bg);
+  height: 52px;
+  width: 100%;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
+  flex-shrink: 0;
+}
+
+.leftSection {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.logo {
+  color: var(--logo-text-color);
+  font-size: 2.8rem;
+  margin-bottom: 5px;
+}
+
+.logoDivider {
+  width: 130px;
+  height: 2px;
+  background-color: var(--divider-color);
+}
+
+.formWrapper {
+  width: 100%;
+  max-width: 340px;
+  display: flex;
+  flex-direction: column;
+}
+
+.formTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; 
+  width: 100%;
+  max-width: 400px; 
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.inputGroup label {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.inputGroup input {
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--header-footer-bg);
+  background-color: var(--column-bg);
+  color: var(--text-primary);
+  font-family: inherit;
+  outline: none;
+  width: 100%;
+}
+
+.inputGroup input::placeholder {
+  color: var(--text-secondary); 
+}
+
+.passwordWrapper {
+  position: relative;
+  display: flex;
+  width: 100%;
+}
+
+.passwordWrapper input {
+  padding-right: 40px; 
+}
+
+.eyeButton {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.eyeButton img {
+  width: 20px;
+  height: auto;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.eyeButton:hover img {
+  opacity: 1;
+}
+
+/* NOVAS CLASSES DE ERRO */
+.inputError {
+  border: 1px solid #D93025 !important;
+  background-color: #FDECEA !important;
+}
+
+.errorMessage {
+  color: #D93025;
+  font-size: 0.75rem;
+  margin-top: 2px;
+}
+
+.submitBtn {
+  margin-top: 15px;
+  padding: 14px;
+  background-color: var(--header-footer-bg);
+  color: var(--footer-text-color);
+  border: none;
+  border-radius: 50px; 
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: background-color 0.2s ease;
+}
+
+.submitBtn:hover {
+  background-color: #1A58B0;
+}
+
+.verticalDivider {
+  width: 2px;
+  height: 75vh;
+  background-color: var(--divider-color);
+}
+
+.imageSection {
+  flex: 1; 
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  padding: 40px;
+}
+
+.cadastroImg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* MODAL DE SUCESSO */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background-color: var(--card-bg);
+  padding: 30px 40px;
+  border-radius: 16px;
+  border: 1px solid var(--column-bg);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+}
+
+.modalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.modalHeader h2 {
+  font-size: 1.2rem;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.modalContent p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+/*Responsividade para telas de 768px*/
+
+@media (max-width: 768px) {
+  .CadastroContainer {
+    flex-direction: column; 
+    height: auto; 
+    min-height: calc(100vh - 52px);
+    padding: 20px; 
+    overflow-y: auto; 
+  }
+
+  .verticalDivider, 
+  .imageSection {
+    display: none; 
+  }
+
+  .leftSection {
+    width: 100%; 
+  }
+
+  .logo {
+    font-size: 2.2rem; 
+  }
+}

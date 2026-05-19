@@ -1,0 +1,165 @@
+.cardContainer {
+  background-color: var(--card-bg);
+  transition: background-color 0.3s ease;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.cardHeader h3 {
+  font-size: 1rem;
+  color: var(--text-primary);
+  font-weight: 600;
+  margin: 0;
+}
+
+.iconBtn {
+  color: var(--dots-color);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.completedTitle {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.descriptionText {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  word-wrap: break-word;
+  margin: 12px 0 0 0; 
+}
+
+.descriptionToggle {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-family: inherit;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.2s ease;
+}
+
+.descriptionToggle.expanded {
+  color: var(--link-color);
+}
+
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; 
+  gap: 12px; 
+  width: 100%;
+  margin-top: 4px;
+}
+
+.moveBtn, .moveBtnBack {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  min-height: 28px;
+  flex-shrink: 0; 
+  border-radius: 50%; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0; 
+  margin: 0;
+  border: none; 
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.moveBtn {
+  background-color: #226ED8; 
+}
+
+.moveBtn:hover {
+  background-color: #1A58B0; 
+  transform: scale(1.05); 
+}
+
+.moveBtn img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain; 
+}
+
+.moveBtnBack {
+  background-color: transparent; 
+}
+
+.moveBtnBack:hover {
+  background-color: rgba(34, 110, 216, 0.1); 
+  transform: scale(1.05); 
+}
+
+.moveBtnBack img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain; 
+}
+
+.moreMenuContainer {
+  position: relative;
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 100%; 
+  right: 0;  
+  background-color: var(--card-bg);
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 8px;
+  z-index: 10; 
+  min-width: 120px;
+  border: 1px solid var(--column-bg);
+}
+
+.deleteMenuBtn {
+  background-color: transparent;
+  color: #E23428;
+  border: none;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.deleteMenuBtn:hover {
+  background-color: var(--btn-secundario-bg);
+}
+
+.deleteMenuBtn img {
+  width: 14px;
+  height: auto;
+}
