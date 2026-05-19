@@ -3,6 +3,7 @@
   align-items: center; 
   justify-content: center; 
   height: calc(100vh - 25px); 
+  overflow-y: auto;
 }
 
 .topBar {
@@ -217,4 +218,29 @@
   color: var(--text-secondary);
   font-size: 0.95rem;
   margin: 0;
+}
+
+/*Responsividade para telas de 768px*/
+
+@media (max-width: 768px) {
+  .CadastroContainer {
+    flex-direction: column; 
+    height: auto; 
+    min-height: calc(100vh - 52px);
+    padding: 20px; 
+    overflow-y: auto; 
+  }
+
+  .verticalDivider, 
+  .imageSection {
+    display: none; 
+  }
+
+  .leftSection {
+    width: 100%; 
+  }
+
+  .logo {
+    font-size: 2.2rem; 
+  }
 }

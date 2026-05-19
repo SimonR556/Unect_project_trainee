@@ -4,7 +4,6 @@
     height: 100dvh;
     overflow: hidden;
     width: 100%;
-    /* Troque o #FAFAFA por isso: */
     background-color: var(--bg-color);
     transition: background-color 0.3s ease;
 }
@@ -189,7 +188,6 @@
   position: relative;
 }
 
-/* A bolinha que desliza */
 .toggleCircle {
   width: 22px;
   height: 22px;
@@ -211,4 +209,87 @@
   width: 14px; 
   height: 14px;
   object-fit: contain;
+}
+
+.carouselBtn {
+     display: none;
+     background: none;
+     border: none;
+     color: var(--text-primary);
+     font-size: 1.5rem;
+     cursor: pointer;
+     padding: 10px 15px; 
+     position: relative;
+     z-index: 10; 
+ }
+
+.headerRightActions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/*Responsividade para telas de 768px*/
+
+@media (max-width: 768px) {
+    .header {
+        padding: 15px 20px;
+        height: auto;
+        min-height: 70px;
+    }
+
+    .headerTitle {
+        font-size: 1.5rem; 
+    }
+
+    .headerLeft img {
+        height: 40px; 
+    }
+
+    .mainContent {
+        padding: 15px 0;
+        overflow-x: hidden;
+        width: 100%;
+    }
+
+    .quoteCard {
+        display: none; 
+    }
+
+    .boardArea {
+        width: 300%;
+        display: flex;
+        flex-wrap: nowrap; 
+        transition: transform 0.3s ease-in-out;
+        gap: 0;
+        margin: 0;
+        align-self: flex-start;
+    }
+
+    .column {
+        width: 33.333%;
+        flex: 0 0 33.333%; 
+        padding: 0 20px; 
+        box-sizing: border-box;
+        height: 100%;
+    }
+
+    .footer {
+        padding: 15px 20px;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        height: auto;
+        text-align: center;
+    }
+
+    .carouselBtn {
+        display: block;
+        background: none;
+        border: none;
+        color: var(--text-primary);
+        font-size: 1.5rem;
+        cursor: pointer;
+        padding: 0 10px;
+    }
 }

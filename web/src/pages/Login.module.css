@@ -171,3 +171,36 @@
 .eyeButton:hover img {
   opacity: 1; 
 }
+
+/*Responsividade para telas de 768px*/
+
+
+@media (max-width: 768px) {
+  .loginContainer {
+    flex-direction: column;
+    height: auto;
+    min-height: calc(100vh - 52px);
+    padding: 20px;
+  }
+
+  .imageSection,
+  .verticalDivider,
+  .horizontalDivider {
+    display: none;
+  }
+
+  .rightSection {
+    width: 100%;
+    padding: 20px 0;
+  }
+
+  .logo {
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+  }
+
+  .forgotPassword {
+    align-self: center;
+    margin-top: 10px;
+  }
+}

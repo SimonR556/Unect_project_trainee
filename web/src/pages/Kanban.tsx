@@ -24,6 +24,15 @@ const [isModalOpen, setIsModalOpen] = useState(false);
 const [frase, setFrase] = useState("Buscando inspiração para o seu dia...");
 const [tasks, setTasks] = useState<Task[]>([]);
 const { isDarkMode, toggleTheme } = useTheme();
+const [mobileColumnIndex, setMobileColumnIndex] = useState(0);
+
+const handleNextColumn = () => {
+    setMobileColumnIndex(prevIndex => (prevIndex < 2 ? prevIndex + 1 : prevIndex));
+};
+
+const handlePrevColumn = () => {
+    setMobileColumnIndex(prevIndex => (prevIndex > 0 ? prevIndex - 1 : prevIndex));
+};
 
 useEffect(() => {
     api.get('/tasks')
@@ -79,9 +88,9 @@ const handleMoveTask = async (taskId: string) => {
     const task = tasks.find(t => t.id === taskId);
     if (!task) return;
 
-    let newStatus = task.status;
+     let newStatus = task.status;
     if (task.status === 'A fazer') newStatus = 'Em andamento';
-    else if (task.status === 'Em andamento') newStatus = 'Feito';
+    else if (task.status === 'Em andamento') newStatus = 'Feito'; 
 
     try {
       await api.put(`/tasks/${taskId}`, { status: newStatus });
@@ -97,9 +106,9 @@ const handleMoveTaskBack = async (taskId: string) => {
     const task = tasks.find(t => t.id === taskId);
     if (!task) return;
 
-    let newStatus = task.status;
+     let newStatus = task.status;
     if (task.status === 'Feito') newStatus = 'Em andamento';
-    else if (task.status === 'Em andamento') newStatus = 'A fazer';
+    else if (task.status === 'Em andamento') newStatus = 'A fazer'; 
 
     try {
       await api.put(`/tasks/${taskId}`, { status: newStatus });
@@ -113,10 +122,8 @@ const handleMoveTaskBack = async (taskId: string) => {
 
 const handleRestartTask = async (taskId: string) => {
     try {
-      // Manda a requisição para a API alterando direto para a primeira coluna
       await api.put(`/tasks/${taskId}`, { status: 'A fazer' });
       
-      // Atualiza a tela instantaneamente
       setTasks(tarefasAtuais =>
         tarefasAtuais.map(t => (t.id === taskId ? { ...t, status: 'A fazer' } : t))
       );
@@ -170,13 +177,22 @@ return(
                 </div>
             </section>
 
-            <section className={styles.boardArea}>
+            <section
+                className={styles.boardArea}
+                style={{ transform: `translateX(-${mobileColumnIndex * 33.333}%)` }}
+            >
                 <div className={styles.column}>
                     <div className={styles.columnHeader}>
+                        <button className={styles.carouselBtn} style={{visibility: 'hidden'}}>&lt;</button>
+
                         <h2>A fazer</h2>
-                        <button className={styles.addBtn} onClick={() => setIsModalOpen(true)}>
-                            <img src={add} alt='adicionar task'/>
-                        </button>
+
+                        <div className={styles.headerRightActions}> 
+                            <button className={styles.addBtn} onClick={() => setIsModalOpen(true)}>
+                                <img src={add} alt='adicionar task'/>
+                            </button>
+                            <button className={styles.carouselBtn} onClick={handleNextColumn}>&gt;</button>
+                        </div>
                     </div>
                     <div className={styles.columnContent}>
                         {tasks
@@ -199,7 +215,9 @@ return(
 
                 <div className={styles.column}>
                     <div className={styles.columnHeader}>
+                        <button className={styles.carouselBtn} onClick={handlePrevColumn}>&lt;</button>
                         <h2>Em andamento</h2>
+                        <button className={styles.carouselBtn} onClick={handleNextColumn}>&gt;</button>
                     </div>
                     <div className={styles.columnContent}>
                        {tasks
@@ -222,7 +240,9 @@ return(
 
                 <div className={styles.column}>
                     <div className={styles.columnHeader}>
+                        <button className={styles.carouselBtn} onClick={handlePrevColumn}>&lt;</button>
                         <h2>Feito</h2>
+                        <button className={styles.carouselBtn} style={{visibility: 'hidden'}}>&gt;</button> 
                     </div>
                     <div className={styles.columnContent}>
                         {tasks
